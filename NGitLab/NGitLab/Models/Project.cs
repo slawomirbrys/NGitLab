@@ -55,31 +55,5 @@ namespace NGitLab.Models
 
         [DataMember(Name = "namespace")]
         public Namespace Namespace;
-
-        public bool EnableGitlabCi(string token, string projectUrl)
-        {
-            ProjectServiceGitlabCI GitlabCi = new ProjectServiceGitlabCI();
-            GitlabCi.Token = token;
-            GitlabCi.ProjectUrl = projectUrl;
-            return GitLabClient.Api.Put().With(GitlabCi).To<bool>(Url + "/" + Id + "/services/gitlab-ci");
-        }
-
-        public bool DisableGitlabCi()
-        {
-            return GitLabClient.Api.Delete().To<bool>(Url + "/" + Id + "/services/gitlab-ci");
-        }
-
-        public bool EnableHipChat(string token, string room)
-        {
-            ProjectServiceHipChat hipchat = new ProjectServiceHipChat();
-            hipchat.Token = token;
-            hipchat.Room = room;
-            return GitLabClient.Api.Put().With(hipchat).To<bool>(Url + "/" + Id + "/services/hipchat");
-        }
-
-        public bool DisableHipChat()
-        {
-            return GitLabClient.Api.Delete().To<bool>(Url + "/" + Id + "/services/hipchat");
-        }
     }
 }

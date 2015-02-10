@@ -53,5 +53,27 @@ namespace NGitLab.Impl
         {
             return _api.Delete().To<bool>(Project.Url + "/" + id);
         }
+
+        public bool EnableGitlabCi(int id, string token, string projectUrl)
+        {
+            var gitlabCi = new ProjectServiceGitlabCI { Token = token, ProjectUrl = projectUrl };
+            return _api.Put().With(gitlabCi).To<bool>(Project.Url + "/" + id + "/services/gitlab-ci");
+        }
+
+        public bool DisableGitlabCi(int id)
+        {
+            return _api.Delete().To<bool>(Project.Url + "/" + id + "/services/gitlab-ci");
+        }
+
+        public bool EnableHipChat(int id, string token, string room)
+        {
+            var hipchat = new ProjectServiceHipChat { Token = token, Room = room };
+            return _api.Put().With(hipchat).To<bool>(Project.Url + "/" + id + "/services/hipchat");
+        }
+
+        public bool DisableHipChat(int id)
+        {
+            return _api.Delete().To<bool>(Project.Url + "/" + id + "/services/hipchat");
+        }
     }
 }
