@@ -104,6 +104,8 @@
     <Compile Include="INamespaceClient.cs" />
     <Compile Include="Impl\NamespaceClient.cs" />
     <Compile Include="Models\NamespaceCreate.cs" />
+    <Compile Include="Models\ProjectServiceGitlabCI.cs" />
+    <Compile Include="Models\ProjectServiceHipChat.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -48,7 +48,7 @@ namespace NGitLab.Impl
         {
             return _api.Post().With(project).To<Project>(Project.Url);
         }
-
+ 
         public bool Delete(int id)
         {
             return _api.Delete().To<bool>(Project.Url + "/" + id);
